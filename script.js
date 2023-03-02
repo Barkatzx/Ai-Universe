@@ -2,14 +2,13 @@ const loadAiDetails = async () => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     const res = await fetch(url);
     const data = await res.json();
-    // displayAi (data.data);
     displayAi(data.data.tools);
 }
 
 
 const displayAi = aiArray => {
     const aiContainer = document.getElementById('ai-container');
-    
+    aiArray = aiArray.slice(0,6)
     // Loop through the array of AI objects and call the displayAi function for each one
     aiArray.forEach(ai => {
         const aiDiv = document.createElement('div');
@@ -27,10 +26,9 @@ const displayAi = aiArray => {
                     <h2 class="card-title text-2xl font-semibold">${ai.name}</h2>
                     <p class="font-semibold"><i class="fa-regular fa-calendar-days"></i> ${ai.published_in}</p>
                     </div>
-                    <div class="card-actions text-3xl">
+                    <div class="text-3xl">
                     <label for="my-modal-5">
                     <i class="fa-solid fa-circle-arrow-right"></i></label>
-                
                     </div>
                     </div>
                 </div>
@@ -38,11 +36,11 @@ const displayAi = aiArray => {
 
     <input type="checkbox" id="my-modal-5" class="modal-toggle" />
         <div class="modal">
-        <div class="modal-box w-11/12 max-w-5xl">
+        <div class="modal-box w-11/12 max-w-5xl shadow-xl">
          <label for="my-modal-5" class="btn btn-sm btn-circle absolute right-1 top-1">✕</label>
          <div class="flex gap-12 hove:box-border">
-        <div class="bg-rose-300 rounded-lg p-6">
-            <h1 class="font-bold text-5xl">Here Is Title</h1>
+        <div class="bg-rose-300 rounded-lg p-6 w-7/12">
+            <h1 class="font-bold text-2xl">${ai.description}</h1>
             <div class="flex gap-12 mt-5 items-center">
                 <div class="bg-slate-100 box-border h-32 w-32 p-4 rounded-lg text-green-600 text-2xl font-bold text-center">$ 10/ month basic</div>
                 <div class="bg-slate-100 box-border h-32 w-32 p-4 rounded-lg text-green-600 text-2xl font-bold text-center">67</div>
@@ -51,21 +49,19 @@ const displayAi = aiArray => {
             <div class="flex gap-12 mt-5 text-center">
                 <div>
                 <h1 class="text-3xl font-bold">Features</h1>
-                <p>. bangladesh</p>
+                <p>${ai.features}</p>
                 </div>
                 <div>
                 <h1 class="text-3xl font-bold">Integrations</h1>
-                <p>. bangladesh</p>
+                <p>${ai.integrations}</p>
                 </div>
             </div>
         </div>
-        <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-            <div class="card-body">
-              <h2 class="card-title">Shoes!</h2>
+        <div class="card w-11/12 bg-base-100 shadow-xl">
+        <span class="indicator-item badge absolute right-1 top-1">${ai.accuracy}</span>
+                <img src="${ai.image}"/>
+              <h2 class="text-xl">Shoes!</h2>
               <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div class="card-actions justify-end">
-              </div>
             </div>
           </div>
     </div>
