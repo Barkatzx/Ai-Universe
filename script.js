@@ -22,10 +22,14 @@ const displayAi = aiArray => {
                     <p>01. ${ai.features[0]}</p>
                     <p>02. ${ai.features[1]}</p>
                     <p>03. ${ai.features[2]}</p> <hr>
+                    <div class="flex justify-between">
+                    <div>
                     <h2 class="card-title text-2xl font-semibold">${ai.name}</h2>
-                    <p>${ai.published_in}</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+                    <p class="font-semibold"><i class="fa-regular fa-calendar-days"></i> ${ai.published_in}</p>
+                    </div>
+                    <div class="card-actions text-3xl">
+                    <i class="fa-solid fa-circle-arrow-right"></i>
+                    </div>
                     </div>
                 </div>
             </div>
