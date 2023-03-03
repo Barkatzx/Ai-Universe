@@ -32,10 +32,10 @@ const loadAiDetails = async (limit) => {
                     <h2 class="card-title text-2xl font-semibold">${ai.name}</h2>
                     <p class="font-semibold"><i class="fa-regular fa-calendar-days"></i> ${ai.published_in}</p>
                     </div>
-                    <div class="text-3xl">
+                    <button class="text-3xl" id="modal-body">
                     <label for="my-modal-5" class="open-modal">
                     <i class="fa-solid fa-circle-arrow-right"></i></label>
-                    </div>
+                    </button>
                     </div>
                 </div>
             </div>
@@ -72,9 +72,9 @@ const toggleSpinner = isLoading => {
 };
 
 const seeMoreButton = document.getElementById('see-more-button');
-
 seeMoreButton.addEventListener('click', () => {
     currentLimit += 6;
+    seeMoreButton.style.display = "none";
     loadAiDetails(currentLimit);
 });
 
