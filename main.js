@@ -1,14 +1,15 @@
 const loadAiDetails = async () => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
-    const res = await fetch(url);
+    toggleSpinner(true);
+    const res = await fetch(url); 
     const data = await res.json();
     displayAi(data.data.tools);
-}
+    toggleSpinner(false);
+};
 
 const displayAi = aiArray => {
     const aiContainer = document.getElementById('ai-container');
-    aiArray = aiArray.slice(0,6)
-
+    aiArray = aiArray.slice(0,6);
 
     // Loop through the array of AI objects and call the displayAi function for each one
     aiArray.forEach(ai => {
@@ -41,17 +42,35 @@ const displayAi = aiArray => {
         aiContainer.appendChild(aiDiv);
     });
 
+    // Get the "Sort by date" button element
+    const sortButton = document.getElementById('sort-by-date');
 
-// Get the "Sort by date" button element
-const sortButton = document.getElementById('sort-by-date');
-
-// Add an event listener to sort the aiArray by published_in property when clicked
-sortButton.addEventListener('click', () => {
-    aiArray.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
-    aiContainer.innerHTML = '';
-    displayAi(aiArray);
-});
+    // Add an event listener to sort the aiArray by published_in property when clicked
+    sortButton.addEventListener('click', () => {
+        aiArray.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
+        aiContainer.innerHTML = '';
+        displayAi(aiArray);
+    });
 };
 
+// Add a toggleSpinner function to display or hide the loading spinner
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('hidden');
+        loaderSection.innerHTML = `<div
+        class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        role="status">
+        <span
+          class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Loading...</span
+        >
+      </div>`;
+    } else {
+        loaderSection.classList.add('hidden');
+        loaderSection.innerHTML = '';
+    }
+};
 
+// Call the loadAiDetails function to start loading the AI tools data
 loadAiDetails();
