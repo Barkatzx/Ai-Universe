@@ -1,4 +1,5 @@
-const loadAiDetails = async () => {
+let currentLimit = 6;
+const loadAiDetails = async (limit) => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     toggleSpinner(true);
     const res = await fetch(url); 
@@ -7,17 +8,17 @@ const loadAiDetails = async () => {
     toggleSpinner(false);
 };
 
-const displayAi = aiArray => {
+    const displayAi = aiArray => {
     const aiContainer = document.getElementById('ai-container');
-    aiArray = aiArray.slice(0,6);
+    aiContainer.innerHTML = '';
+    aiArray = aiArray.slice(0,currentLimit);
 
-    // Loop through the array of AI objects and call the displayAi function for each one
     aiArray.forEach(ai => {
         const aiDiv = document.createElement('div');
         aiDiv.classList.add('card');
         aiDiv.innerHTML = `
-            <div class="card card-compact bg-gray-300 drop-shadow-2xl h-5/6">
-                <figure><img src="${ai.image}"/></figure>
+            <div class="card card-compact bg-gray-300 drop-shadow-2xl">
+           <figure class="h-64"><img src="${ai.image}"/></figure>
                 <div class="card-body">
                     <h1 class="text-3xl font-semibold">Features</h1> <br>
                     <ol class="list-decimal pl-8">
@@ -42,10 +43,8 @@ const displayAi = aiArray => {
         aiContainer.appendChild(aiDiv);
     });
 
-    // Get the "Sort by date" button element
+    // Get "Sort By Date" Button Element
     const sortButton = document.getElementById('sort-by-date');
-
-    // Add an event listener to sort the aiArray by published_in property when clicked
     sortButton.addEventListener('click', () => {
         aiArray.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
         aiContainer.innerHTML = '';
@@ -53,7 +52,7 @@ const displayAi = aiArray => {
     });
 };
 
-// Add a toggleSpinner function to display or hide the loading spinner
+// Add a ToggleSpinner Function to Display And Hide The Loading Spinner
 const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('loader');
     if (isLoading) {
@@ -72,5 +71,11 @@ const toggleSpinner = isLoading => {
     }
 };
 
-// Call the loadAiDetails function to start loading the AI tools data
+const seeMoreButton = document.getElementById('see-more-button');
+
+seeMoreButton.addEventListener('click', () => {
+    currentLimit += 6;
+    loadAiDetails(currentLimit);
+});
+
 loadAiDetails();
