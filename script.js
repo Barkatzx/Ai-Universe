@@ -116,3 +116,42 @@ const displayAi = aiArray => {
     });
     
 };
+
+
+const displayAi = aiArray => {
+    const aiContainer = document.getElementById('ai-container');
+    aiArray = aiArray.slice(0,6)
+
+    // document.getElementById('see-more-button').addEventListener('click', function(){
+    //     aiContainer();
+    // })
+    // Loop through the array of AI objects and call the displayAi function for each one
+    aiArray.forEach(ai => {
+        const aiDiv = document.createElement('div');
+        aiDiv.classList.add('card');
+        aiDiv.innerHTML = `
+            <div class="card card-compact bg-gray-300 drop-shadow-2xl h-5/6">
+                <figure><img src="${ai.image}"/></figure>
+                <div class="card-body">
+                    <h1 class="text-3xl font-semibold">Features</h1> <br>
+                    <ol class="list-decimal pl-8">
+                        ${ai.features[0] ? `<li>${ai.features[0]}</li>` : `<li style="display:none;"></li>`}
+                        ${ai.features[1] ? `<li>${ai.features[1]}</li>` : `<li style="display:none;"></li>`}
+                        ${ai.features[2] ? `<li>${ai.features[2]}</li>` : `<li style="display:none;"></li>`}
+                    </ol>
+                    <hr>
+                    <div class="flex justify-between">
+                    <div>
+                    <h2 class="card-title text-2xl font-semibold">${ai.name}</h2>
+                    <p class="font-semibold"><i class="fa-regular fa-calendar-days"></i> ${ai.published_in}</p>
+                    </div>
+                    <div class="text-3xl">
+                    <label for="my-modal-5" class="open-modal">
+                    <i class="fa-solid fa-circle-arrow-right"></i></label>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        aiContainer.appendChild(aiDiv);
+    });

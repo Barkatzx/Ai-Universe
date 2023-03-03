@@ -5,15 +5,11 @@ const loadAiDetails = async () => {
     displayAi(data.data.tools);
 }
 
-const displayAiDetails = ai => {
-    console.log(ai);
-    const modalTitle = document.getElementById('description');
-    modalTitle.innerText = ai.tools.description;
-}
-
 const displayAi = aiArray => {
     const aiContainer = document.getElementById('ai-container');
     aiArray = aiArray.slice(0,6)
+
+
     // Loop through the array of AI objects and call the displayAi function for each one
     aiArray.forEach(ai => {
         const aiDiv = document.createElement('div');

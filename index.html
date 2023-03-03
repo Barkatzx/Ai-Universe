@@ -11,17 +11,31 @@
     <script src="https://kit.fontawesome.com/67ef68511d.js" crossorigin="anonymous"></script>
 </head>
 <body class="container mx-auto">
+        <!-- Loading Spinner Added Here -->
+        <section>
+            <div class="flex justify-center">
+                <div
+                  class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                  role="status">
+                  <span
+                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                    >Loading...</span
+                  >
+                </div>
+              </div>
+        </section>
+    <!-- Header Added Here -->
     <header>
         <div class="text-center">
         <h1 class="text-5xl font-bold py-5">AI Universe Hub</h1>
         <button class="btn btn-error" id="sort-by-date">Sort By Date</button>
         </div>
+    <!-- Card Body Added Here -->
         <main class="mt-9">
             <div id="ai-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
             </div>
         </main>
-        
+    <!-- Modal Added Here -->
         <input type="checkbox" id="my-modal-5" class="modal-toggle" />
         <div class="modal">
         <div class="modal-box w-11/12 max-w-5xl shadow-xl">
@@ -54,9 +68,9 @@
           </div>
     </div>
   </div>
-          
-
+         
         </section>
+    <!-- See More Button Added Here -->
         <div class="text-center">
             <button class="btn btn-error" id="see-more-button">See More</button>
             </div>
