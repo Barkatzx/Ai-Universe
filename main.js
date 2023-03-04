@@ -22,11 +22,7 @@ const loadAiDetails = async (limit) => {
                 <div class="card-body">
                     <h1 class="text-3xl font-semibold">Features</h1>
                     <ol class="list-decimal pl-4 text-lg">
-                        ${ai.features[0] ? `<li>${ai.features[0]}</li>` : `<li style="display:none;"></li>`}
-                        ${ai.features[1] ? `<li>${ai.features[1]}</li>` : `<li style="display:none;"></li>`}
-                        ${ai.features[2] ? `<li>${ai.features[2]}</li>` : `<li style="display:none;"></li>`}
-                        ${ai.features[3] ? `<li>${ai.features[3]}</li>` : `<li style="display:none;"></li>`}
-                        ${ai.features[4] ? `<li>${ai.features[4]}</li>` : `<li style="display:none;"></li>`}
+                    ${ai.features.map(feature => feature ? `<li>${feature}</li>` : `<li style="display:none;"></li>`).join('\n')}
                     </ol>
                     <hr>
                     <div class="flex justify-between">
