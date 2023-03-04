@@ -2,7 +2,6 @@ const loadDataDetails = async (id) => {
   const apiUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
   const res = await fetch(apiUrl);
   const data = await res.json();
-  console.log(data.data);
   displayData(data.data);
 };
 const displayData = ai => {
@@ -11,7 +10,7 @@ const displayData = ai => {
 // Feature for Modal
   let featuresContainer = document.getElementById("features");
   let featuresList = [];
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 10; i++) {
     if (ai.features[i] && ai.features[i].feature_name) {
       featuresList.push(`<li>${ai.features[i].feature_name}</li>`);
     } else {
@@ -28,7 +27,7 @@ const displayData = ai => {
 // integrations For Modal
 let integratContainer = document.getElementById("integration");
   let integratList = [];
-  for (let i = 0; i <= 3; i++) {
+  for (let i = 0; i <= 10; i++) {
     if (ai.integrations[i] && ai.integrations[i]) {
       integratList.push(`<li>${ai.integrations[i]}</li>`);
     } else {

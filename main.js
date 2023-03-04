@@ -17,7 +17,7 @@ const loadAiDetails = async (limit) => {
         const aiDiv = document.createElement('div');
         aiDiv.classList.add('card');
         aiDiv.innerHTML = `
-            <div class="card card-compact bg-gray-300 drop-shadow-2xl">
+            <div class="card card-compact bg-gray-100 drop-shadow-2xl hover:outline-blue-400 hover:outline">
            <figure class="h-64"><img src="${ai.image}"/></figure>
                 <div class="card-body">
                     <h1 class="text-3xl font-semibold">Features</h1>
@@ -25,6 +25,8 @@ const loadAiDetails = async (limit) => {
                         ${ai.features[0] ? `<li>${ai.features[0]}</li>` : `<li style="display:none;"></li>`}
                         ${ai.features[1] ? `<li>${ai.features[1]}</li>` : `<li style="display:none;"></li>`}
                         ${ai.features[2] ? `<li>${ai.features[2]}</li>` : `<li style="display:none;"></li>`}
+                        ${ai.features[3] ? `<li>${ai.features[3]}</li>` : `<li style="display:none;"></li>`}
+                        ${ai.features[4] ? `<li>${ai.features[4]}</li>` : `<li style="display:none;"></li>`}
                     </ol>
                     <hr>
                     <div class="flex justify-between">
