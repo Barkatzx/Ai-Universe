@@ -17,7 +17,7 @@ const loadAiDetails = async (limit) => {
         const aiDiv = document.createElement('div');
         aiDiv.classList.add('card');
         aiDiv.innerHTML = `
-            <div class="card card-compact bg-gray-100 drop-shadow-2xl hover:outline-blue-400 hover:outline">
+            <div class="card card-compact bg-gray-100 drop-shadow-2xl">
            <figure class="h-64"><img src="${ai.image}"/></figure>
                 <div class="card-body">
                     <h1 class="text-3xl font-semibold">Features</h1>
@@ -36,7 +36,7 @@ const loadAiDetails = async (limit) => {
                     </div>
                     <button onclick="loadDataDetails('${ai.id}')" class="text-3xl">
                     <label for="my-modal-5" class="open-modal">
-                    <i class="fa-solid fa-circle-arrow-right"></i></label>
+                    <i class="fa-solid fa-circle-right text-rose-400"></i></label>
                     </button>
                     </div>
                 </div>
