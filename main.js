@@ -1,5 +1,5 @@
 let currentLimit = 6;
-const loadAiDetails = async (limit) => {
+const loadAiDetails = async () => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     toggleSpinner(true);
     const res = await fetch(url); 
@@ -21,14 +21,14 @@ const loadAiDetails = async (limit) => {
            <figure class="h-64"><img src="${ai.image}"/></figure>
                 <div class="card-body">
                     <h1 class="text-3xl font-semibold">Features</h1>
-                    <ol class="list-decimal pl-4 text-lg">
+                    <ol class="list-decimal pl-5 text-lg">
                     ${ai.features.map(feature => feature ? `<li>${feature}</li>` : `<li style="display:none;"></li>`).join('\n')}
                     </ol>
                     <hr>
                     <div class="flex justify-between">
                     <div>
                     <h2 class="card-title text-2xl font-semibold">${ai.name}</h2>
-                    <p class="font-semibold"><i class="fa-regular fa-calendar-days"></i> ${ai.published_in}</p>
+                    <p class=""><i class="fa-regular fa-calendar-days"></i> ${ai.published_in}</p>
                     </div>
                     <button onclick="loadDataDetails('${ai.id}')" class="text-3xl">
                     <label for="my-modal-5" class="open-modal">
@@ -68,7 +68,7 @@ const toggleSpinner = isLoading => {
         loaderSection.innerHTML = '';
     }
 };
-
+// See More Button Function Added
 const seeMoreButton = document.getElementById('see-more-button');
 seeMoreButton.addEventListener('click', () => {
     currentLimit += 6;

@@ -4,9 +4,10 @@ const loadDataDetails = async (id) => {
   const data = await res.json();
   displayData(data.data);
 };
-const displayData = ai => {
-  document.getElementById('description').innerText = ai.description;
 
+const displayData = ai => {
+  // Description For Modal
+  document.getElementById('description').innerText = ai.description;
 // Feature for Modal
   let featuresContainer = document.getElementById("features");
   let featuresList = [];
@@ -19,7 +20,7 @@ const displayData = ai => {
   }
   
   if (featuresList.length > 0) {
-    const featuresHtml = `<ol class="list-decimal pl-3 font-small">${featuresList.join('')}</ol>`;
+    const featuresHtml = `<ol class="list-decimal pl-5 font-small">${featuresList.join('')}</ol>`;
     featuresContainer.innerHTML = featuresHtml;
   } else {
     featuresContainer.innerHTML = '';
@@ -36,7 +37,7 @@ let integratContainer = document.getElementById("integration");
   }
   
   if (integratList.length >= 0) {
-    const integratHtml = `<ol class="list-decimal pl-3 font-small">${integratList.join('')}</ol>`;
+    const integratHtml = `<ol class="list-decimal pl-5 font-small">${integratList.join('')}</ol>`;
     integratContainer.innerHTML = integratHtml;
   } else {
     integratContainer.innerHTML = '';
@@ -92,6 +93,3 @@ let integratContainer = document.getElementById("integration");
   }  
 
 }
-
-  loadDataDetails();
-
