@@ -80,20 +80,16 @@ let integratContainer = document.getElementById("integration");
   `;
 
 
-  // Accurency For Modal
-  const accuracyElement = document.getElementById('accurecy').innerHTML = `
-  <h1 class="indicator-item badge absolute right-1 top-1 bg-red-500 text-lg p-4 font-semibold">${ai.accuracy.score * 100}% Accurecy</h1>
+  const accuracyElement = document.getElementById('accuracy');
+  accuracyElement.innerHTML = `
+    <h1 class="indicator-item badge absolute right-1 top-1 bg-red-500 font-semibold p-2">${ai.accuracy.score * 100}% Accuracy</h1>
   `;
-  if (ai.accuracy && ai.accuracy.score * 100 === 0) {
-    accuracyElement.style.add = "hidden";
-  }
-  else {
-    accuracyElement.style.remove = "hidden";
-  }
-
-
-
-
+  
+  if (ai.accuracy.score * 100 === 0) {
+    accuracyElement.style.display = "none";
+  } else {
+    accuracyElement.style.display = "block";
+  }  
 
 }
 
