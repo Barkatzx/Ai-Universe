@@ -80,7 +80,10 @@ let integratContainer = document.getElementById("integration");
   </div>
   `
 
-  Accurency For Modal;
+  // Accurency For Modal
+  document.getElementById('accurecy').innerHTML = `
+  <h1 class="indicator-item badge absolute right-1 top-1 bg-red-500 text-lg p-4 font-semibold">${ai.accuracy.score * 100}% Accurecy</h1>
+  `
 }
 
   loadDataDetails();
