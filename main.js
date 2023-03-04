@@ -20,8 +20,8 @@ const loadAiDetails = async (limit) => {
             <div class="card card-compact bg-gray-300 drop-shadow-2xl">
            <figure class="h-64"><img src="${ai.image}"/></figure>
                 <div class="card-body">
-                    <h1 class="text-3xl font-semibold">Features</h1> <br>
-                    <ol class="list-decimal pl-8">
+                    <h1 class="text-3xl font-semibold">Features</h1>
+                    <ol class="list-decimal pl-4 text-lg">
                         ${ai.features[0] ? `<li>${ai.features[0]}</li>` : `<li style="display:none;"></li>`}
                         ${ai.features[1] ? `<li>${ai.features[1]}</li>` : `<li style="display:none;"></li>`}
                         ${ai.features[2] ? `<li>${ai.features[2]}</li>` : `<li style="display:none;"></li>`}
@@ -32,7 +32,7 @@ const loadAiDetails = async (limit) => {
                     <h2 class="card-title text-2xl font-semibold">${ai.name}</h2>
                     <p class="font-semibold"><i class="fa-regular fa-calendar-days"></i> ${ai.published_in}</p>
                     </div>
-                    <button class="text-3xl" id="modal-body">
+                    <button onclick="loadDataDetails('${ai.id}')" class="text-3xl">
                     <label for="my-modal-5" class="open-modal">
                     <i class="fa-solid fa-circle-arrow-right"></i></label>
                     </button>
