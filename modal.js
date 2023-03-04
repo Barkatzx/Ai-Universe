@@ -59,30 +59,42 @@ let integratContainer = document.getElementById("integration");
 
   // Basic Plan
   document.getElementById('basic').innerHTML = `
-  <div class="bg-white box-border p-2 rounded-lg text-2xl font-bold text-center text-green-600 text-clip	">
+  <div class="bg-white box-border p-5 rounded-2xl text-2xl font-bold text-center text-green-600 text-clip	">
   <p>${ai.pricing[0].price}</p>
   <p>${ai.pricing[0].plan}</p>
   </div>
-  `
+  `;
   // Pro Plan
   document.getElementById('premium').innerHTML = `
-  <div class="bg-white box-border p-2 rounded-lg text-2xl font-bold text-center text-yellow-600 text-clip	">
+  <div class="bg-white box-border p-5 rounded-2xl text-2xl font-bold text-center text-yellow-600 text-clip	">
   <p>${ai.pricing[1].price}</p>
   <p>${ai.pricing[1].plan}</p>
   </div>
-  `
+  `;
   // Enterprise Plan
   document.getElementById('enterprise').innerHTML = `
-  <div class="bg-white box-border p-2 rounded-lg text-2xl font-bold text-center text-red-400 text-clip	">
+  <div class="bg-white box-border p-5 rounded-2xl text-2xl font-bold text-center text-red-400 text-clip	">
   <p>${ai.pricing[2].price}</p>
   <p>${ai.pricing[2].plan}</p>
   </div>
-  `
+  `;
+
 
   // Accurency For Modal
-  document.getElementById('accurecy').innerHTML = `
+  const accuracyElement = document.getElementById('accurecy').innerHTML = `
   <h1 class="indicator-item badge absolute right-1 top-1 bg-red-500 text-lg p-4 font-semibold">${ai.accuracy.score * 100}% Accurecy</h1>
-  `
+  `;
+  if (ai.accuracy && ai.accuracy.score * 100 === 0) {
+    accuracyElement.style.add = "hidden";
+  }
+  else {
+    accuracyElement.style.remove = "hidden";
+  }
+
+
+
+
+
 }
 
   loadDataDetails();
